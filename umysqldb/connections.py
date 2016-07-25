@@ -93,7 +93,6 @@ class Connection(pymysql.connections.Connection):
             raise Error("Already closed")
         self._umysql_conn.close()
 
-
     def _connect(self):
         try:
             self._umysql_conn.connect(self.host, self.port, self.user,
@@ -105,6 +104,8 @@ class Connection(pymysql.connections.Connection):
             traceback = sys.exc_info()[2]
             exc = map_umysql_error_to_umysqldb_exception(exc)
             raise exc, None, traceback
+    #for compatibility of pyMySQL>=0.75
+    self.connect = _connect
 
     # internal use only (called from cursor)
     def query(self, sql, args=()):
