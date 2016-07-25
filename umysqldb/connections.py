@@ -109,7 +109,7 @@ class Connection(pymysql.connections.Connection):
             exc = map_umysql_error_to_umysqldb_exception(exc)
             raise exc, None, traceback
     #for compatibility of pyMySQL>=0.75
-    self.connect = _connect
+    connect = _connect
 
     # internal use only (called from cursor)
     def query(self, sql, args=()):
