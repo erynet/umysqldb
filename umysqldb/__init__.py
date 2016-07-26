@@ -8,6 +8,8 @@ from .util import setdocstring
 
 __all__ += ['DATETIME']
 
+# for pyMySQL>=0.75 compatibility
+paramstyle = "format"
 
 @setdocstring(pymysql.Connect)
 def Connect(*args, **kwargs):
