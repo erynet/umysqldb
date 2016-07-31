@@ -11,6 +11,13 @@ __all__ += ['DATETIME']
 # for pyMySQL>=0.75 compatibility
 paramstyle = "format"
 
+@setdocstring(pymysql.Binary)
+def Binary(x, encoding="utf8"):
+    if PY2:
+        return bytearray(x, encoding)
+    else:
+        return bytes(x, encoding)
+
 @setdocstring(pymysql.Connect)
 def Connect(*args, **kwargs):
     from .connections import Connection
