@@ -13,11 +13,8 @@ paramstyle = "format"
 
 @setdocstring(pymysql.Binary)
 def Binary(x, encoding="utf8"):
-    if PY2:
-        return bytearray(x, encoding)
-    else:
-        return bytes(x, encoding)
-
+    return bytearray(x, encoding)
+    
 @setdocstring(pymysql.Connect)
 def Connect(*args, **kwargs):
     from .connections import Connection
